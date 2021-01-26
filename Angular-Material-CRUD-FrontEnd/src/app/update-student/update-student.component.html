@@ -1,0 +1,71 @@
+<div class="form-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="form-box">
+    <mat-card-header>
+      <mat-card-title>Update Student</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-horizontal-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Roll No</ng-template>
+
+            <mat-form-field class="form-group example-full-width">
+              <input matInput placeholder="rollNo" formControlName="rollNo" maxlength="10" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && ff.rollNo.errors }">
+
+              <mat-error *ngIf="ff.rollNo.hasError('required')">Roll No Id is required</mat-error>
+            </mat-form-field>
+
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Name</ng-template>
+
+            <mat-form-field>
+
+              <input matInput placeholder="name" formControlName="name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && sf.name.errors }">
+
+              <mat-error *ngIf="sf.name.hasError('required')">Name is required</mat-error>
+
+            </mat-form-field>
+
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Email</ng-template>
+
+            <mat-form-field class="form-group example-full-width">
+              <input matInput placeholder="email" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && tf.email.errors }">
+
+              <mat-error *ngIf="tf.email.hasError('required')">Email is required</mat-error>
+            </mat-form-field>
+
+
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <!-- <button mat-button matStepperNext>Next</button> -->
+              <button mat-stroked-button color="accent" class="btn-block" (click)="onSubmit()">Register</button>
+            </div>
+          </form>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
