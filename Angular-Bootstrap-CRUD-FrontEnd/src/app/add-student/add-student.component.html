@@ -1,0 +1,32 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Add Student </h3>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label> Roll No </label>
+            <input type="text" formControlName="rollNo" class="form-control" maxlength="3" [(ngModel)]="student.rollNo"
+                placeholder="Roll No" />
+            <span class="error" *ngIf="rollNo.invalid && rollNo.touched">Roll No. is required</span>
+        </div>
+
+        <div class="form-group">
+            <label> Name </label>
+            <input type="text" formControlName="name" class="form-control" [(ngModel)]="student.name"
+                placeholder="Name" />
+            <span class="error" *ngIf="name.invalid && name.touched">Name is required</span>
+        </div>
+
+        <div class="form-group">
+            <label> Email </label>
+            <input type="email" formControlName="email" class="form-control" [(ngModel)]="student.email"
+                placeholder="Email" />
+            <span class="error" *ngIf="email.invalid && email.touched">Email is required</span>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-success" type="submit" [disabled]="registerForm.invalid">Submit</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+        </div>
+    </form>
+</div>
